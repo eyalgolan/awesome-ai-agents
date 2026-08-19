@@ -2197,7 +2197,7 @@ Science, Multimodal, Social, Multi-agent
 </details>
 
 ## [no_human](https://github.com/no-human-ai/no_human)
-From a ticket to a reviewed pull request, on your own machine
+Hand it a ticket, get back a reviewed pull request
 
 <details>
 
@@ -2205,12 +2205,13 @@ From a ticket to a reviewed pull request, on your own machine
 Coding, SWE, Multi-agent
 
 ### Description
-- Takes a task from Jira, Linear, monday.com, or a GitHub/GitLab issue — or a sentence you type — and plans, writes, tests and delivers it as a pull request.
-- **A second model reviews the work with no memory of writing it**, is instructed to refute "done", and produces a pass/fail checklist citing file and line. A fail blocks the pull request; a reviewer that cannot run fails closed.
-- **A tamper guard runs before the review**: a net drop in tests or assertions, a new skip, a tautological assertion or a deleted test file stops the run.
-- **The agent opens the pull request and cannot merge it** — the merge verbs are denied to its sessions and pushes to protected branches are refused; merging is a human command.
-- Bounded by design: three attempts, per-attempt turn limits, and a spend cap enforced before a run starts. When it cannot finish it parks with one specific question instead of inventing a diff.
-- Runs locally on SQLite and your own Claude subscription (OpenAI Codex is a second coding-backend option). Desktop apps for macOS, Windows and Linux; MIT licensed.
+- You know the loop: the agent comes back confident and wrong, and you are the one checking it ran the tests. no_human closes that loop instead.
+- Takes a task — a Jira, Linear or monday.com ticket, a GitHub or GitLab issue, or a sentence you type — and plans it, writes the change, and runs your tests.
+- **A second model that never saw the code being written reviews it**, is told to refute "done", and cites file and line for every finding. A fail blocks the pull request; a reviewer that cannot run fails closed.
+- **A tamper guard runs first**: a net drop in tests or assertions, a new skip, a tautological assertion or a deleted test file stops the run before a reviewer token is spent.
+- **It opens the pull request and cannot merge it.** The merge commands are denied to its sessions and pushes to protected branches are refused. Merging stays a human command.
+- Tasks run in parallel, each with a spend cap set before it starts. When it cannot finish, it stops and asks one specific question instead of inventing a diff.
+- Nothing to deploy: it runs on the developer's machine on SQLite and your existing git host, on your own Claude subscription (OpenAI Codex is a second backend option). Desktop apps for macOS, Windows and Linux; MIT.
 
 ### Links
 - [GitHub](https://github.com/no-human-ai/no_human)
